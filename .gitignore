@@ -1,2 +1,5 @@
 .vscode
+.ipynb_checkpoints
 /data
+/ECG_Data
+/exercise_ECGID

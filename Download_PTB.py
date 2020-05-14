@@ -25,18 +25,18 @@ def cbk(a, b, c):
 # os.chdir("data")  # save directory
 
 try:
-    os.mkdir("data")
+    os.mkdir("ECG_Data")
 except:
     pass
 
-dir = os.path.abspath('./data')
+dir = os.path.abspath('./ECG_Data')
 url = 'https://archive.physionet.org/physiobank/database/ptbdb/RECORDS'
 work_path = os.path.join(dir, 'RECORDS.txt')
 urllib.request.urlretrieve(url, work_path, cbk)
 
 
 # read RECORDS.txt
-f = open("RECORDS.txt", "r")
+f = open("./ECG_Data/RECORDS.txt", "r")
 Data0 = []
 Data1 = []
 for lines in f.readlines():
@@ -72,7 +72,7 @@ MIList = ['antero-lateral', 'anterior', 'antero-septal', 'antero-septo-lateral',
 # for i in [25]:
 for i in range(len(Data0)):
     # create directory
-    dir = os.path.abspath('./data')
+    dir = os.path.abspath('./ECG_Data')
     work_path = os.path.join(dir, Data0[i])
     if not os.path.exists(work_path):
         os.makedirs(work_path)
@@ -133,7 +133,7 @@ for i in range(len(Data0)):
         # print(patientURL)
         pass
 
-    dir = os.path.abspath('./data')
+    dir = os.path.abspath('./ECG_Data')
     HeaName = Data1[i] + '.txt'
     work_path = os.path.join(dir, Data0[i])
     work_path = os.path.join(work_path, HeaName)
@@ -150,7 +150,7 @@ for i in range(len(Data0)):
         Data1[i] + url_seg2 + Data1[i] + url_seg4
     # print(url_Info)
     # e.g. url = 'https://archive.physionet.org/atm/ptbdb/patient021/s0073lre/0/10/export/matlab/s0073lrem.info'
-    dir = os.path.abspath('./data')
+    dir = os.path.abspath('./ECG_Data')
     InfoFile = Data1[i] + url_seg4  # filename of .info檔
     work_path = os.path.join(dir, Data0[i])
     work_path = os.path.join(work_path, InfoFile)
@@ -162,7 +162,7 @@ for i in range(len(Data0)):
         Data1[i] + url_seg2 + Data1[i] + url_seg5
     # print(url_Mat)
     # e.g. url = 'https://archive.physionet.org/atm/ptbdb/patient021/s0073lre/0/10/export/matlab/s0073lrem.mat'
-    dir = os.path.abspath('./data')
+    dir = os.path.abspath('./ECG_Data')
     MatFile = Data1[i] + url_seg5  # filename of .info檔
     work_path = os.path.join(dir, Data0[i])
     work_path = os.path.join(work_path, MatFile)
